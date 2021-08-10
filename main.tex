@@ -1,0 +1,196 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Start with the Overleaf tutorial, it's very easy: https://www.overleaf.com/learn/latex/Free_online_introduction_to_LaTeX_(part_1)
+
+% Other very useful resources: 
+% a quick guide https://www.overleaf.com/latex/templates/a-quick-guide-to-latex/fghqpfgnxggz
+% a website that lets you write equations into Latex code
+%https://latex.codecogs.com/eqneditor/editor.php
+
+% same, for tables
+%https://www.tablesgenerator.com/
+
+% same, for finding math symbols that you don't know the name of :)
+% http://detexify.kirelabs.org/classify.html
+
+% you can search for citations in .bib format here https://www.bibme.org/bibtex
+
+% Copied from Overleaf's tutorial:
+
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right - hit ctrl+enter to compile or the Recompile button on the right. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Basics: 
+% Comments start with a % sign (or more)
+% Commands start with a backslash \
+% Every document starts with a little Preamble, mainly the document class command. This one will be an "article". Other classes are books etc
+
+\documentclass{article}
+
+
+% Next we can load some packages - sets of parameters for the different aspects that are coded into the Latex document to format the typesetting - the look of the document - a certain way.
+
+\usepackage{graphicx} % this one is for images
+\usepackage{amsmath} % this one is for maths symbols, like the infinity sign \infty
+\usepackage{natbib} % this one is for the bibliography
+\usepackage{ tipa }
+
+% Next we begin the body of the document - what will actually turn into the text on the right, by compiling
+
+\begin{document}
+Hello World!
+
+$x^{a}$
+
+\textbeta
+
+\begin{abstract}
+
+Anything you write without the percent sign or command symbol (backslash) after starting the document will print on the pdf document when you compile.
+
+Let's start with a new section - Introduction, using the `` section'' command. subsections are defined with ``subsection'' and susbsubsections with... you guessed it ``subsusbsection''.
+\end{abstract}
+
+\section{Introduction}
+Words are separated by one or more
+spaces. And space in the source file is collapsed   
+in        the output.
+
+Paragraphs are separated by one
+or more blank lines (at least one empty line, not just hitting enter once).
+
+
+
+
+Extra blank lines are also collapsed in the output. 
+
+
+
+
+Like so.
+
+If you want more space between paragraphs can be created using vspace command.
+
+\vspace{2cm}
+
+Like so.
+
+or even MORE space!
+
+\vspace{5cm}
+
+Like so.
+
+
+New line can be signalled\\ by using two backslashes like here.
+
+\vspace{1cm}
+
+\textbf{Bold} or \textit{Italics} have their own command, as does \underline{Underline}  and \emph{Emphasis}. Dont ask what the difference between italics and emphasis is :)
+
+\vspace{1cm}
+
+Mathematics mode is signalled by the dollar sign on either side: 
+
+Let $a$ and $b$ be distinct positive
+integers, and let $c = a - b + 1$.
+
+
+\subsection{Basic commands, the ones with begin end}
+
+The basic kinds of commands, enclosed between tags are:
+
+Let's start with ordered lists, using the command ``enumerate'' and ``item'' for each uhm... item:
+
+\begin{enumerate} % for numbers
+    \item Ordered lists: 
+    
+    already mentioned, using the enumerate command
+    
+    \item  Unordered Lists: 
+    
+    using the itemize command
+      For example, here are some exceptions and little tricks that you need to know:
+    \begin{itemize}
+        \item Single quotes: `text'. First is a back mark (the one on the top of the keyboard)
+        \item Double quotes: ``text''.
+        \item Escape characters: Reserved characters need to be escaped with a backslash, otherwise they have special functions: like \#, \$, \&, \%
+        \item Symbols get their own little commands, like the infinity symbol:  $\infty$  from the asmath package
+    \end{itemize}
+    
+    
+    
+    \item Equations
+    
+    using the ``equation'' command
+    
+    \begin{equation} \label{eq_IIC}
+        IIC=\frac{\sum_{i=1}^{n} \sum_{j=1}^{n}\frac{a_{i}a_{j}}{1+nl_{ij}}}{A_{L}^{2}}
+    \end{equation}
+    
+    
+    item Figures: 
+    
+    using the ``figure'' command
+    
+    
+    \begin{figure}[!h] % the h parameter there tells latex to try to fit the figure as close to the position in the text where the command is as possible. Look up other parameter value options.
+        \centering
+        \includegraphics[height=8cm]{iconnlogo.jpg}
+        \caption{Our glorious logo!}
+        \label{fig_logo}
+    \end{figure}
+    
+    \item  Tables
+    
+    using the ``tabular'' command
+    
+    \begin{center}
+        \begin{tabular}{ c c c }
+             Marcel & the & Shell \\ 
+             cell4 & cell5 & cell6 \\  
+             cell7 & cell8 & cell9    
+        \end{tabular}
+        \label{table_ex}
+    \end{center}
+    
+\end{enumerate}
+
+
+\vspace{1cm}
+
+\subsection{References}
+
+Equations and figures and tables are numbered automatically. You can also number them manually and tweak taht kind of thing, look it up if you need to.
+    
+    To refer to a equation/figure/table, use the ``label'' command when defining the equation/ and the ``ref'' command when referencing in the text. Like, see Eq. \ref{eq_IIC} and Fig.  \ref{fig_logo} and Table \ref{table_ex} for details. \ref{eq_IIC}.
+    
+    To turn these into links in the pdf, you need to add some extra code, look it up!
+
+\vspace{1cm}
+
+\subsection{Bibliography }
+
+Same with citations: Let's add some references.
+
+First, add a .bib file. Either create it new, or upload one or import it from Mendeley/zotero.
+
+Then you can add citations, using the ``citep'' or ``citet'' commands, and beginning with the words or author you are looking for, the little latex bib code that the paper gets might get recommended to ou by the autocorrect, or you might have to search using ctrl+space. 
+
+The two commands are to cite either in full brackets like so \citep{tiwari_jha_singh_2020}, or by mentioning the author first, like saying that have studied critical nodes.
+
+You can also add papers by hand into a new .bib file, by searching for the bib code for it and ust copy pasting that. (and you can add the Mendeley references too, but then it won't update automatically). 
+
+Let's search for Shubham's latest paper on this useful website:
+
+https://www.bibme.org/bibtex
+
+And copy that into a new .bib file and now we can 
+Added line.
+
+\bibliographystyle{elsarticle-harv} %
+\bibliography{references.bib}
+
+
+
+\end{document}
